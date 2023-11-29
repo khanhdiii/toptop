@@ -3,11 +3,11 @@ import Sidebar from './Sidebar';
 
 function DefaultLayout({ children }) {
   return (
-    <div>
+    <div className="wrapper flex flex-col items-center">
       <Header />
-      <div className="container">
+      <div className="container w-[1150px] flex">
         <Sidebar />
-        <div className="content">{children}</div>
+        <div className="content flex-1 min-h-[1000px]">{children}</div>
       </div>
     </div>
   );
