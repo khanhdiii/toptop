@@ -49,7 +49,12 @@ function Header() {
           </div>
         </Tippy>
         <div className="action">
-          <Button>Login</Button>
+          <Button to="/upload" outline onClick={() => {}}>
+            Upload
+          </Button>
+          <Button primary to="/login" onClick={() => {}}>
+            Login
+          </Button>
         </div>
       </div>
     </header>
