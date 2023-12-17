@@ -1,7 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Button({ to, href, primary = false, secondary = false, outline = false, children, onClick, ...passProps }) {
+function Button({
+  to,
+  href,
+  primary = false,
+  large = false,
+  small = false,
+  outline = false,
+  leftIcon = false,
+  rightIcon = false,
+  children,
+  onClick,
+  ...passProps
+}) {
   let Comp = 'button';
 
   const props = { onClick, ...passProps };
@@ -14,17 +26,21 @@ function Button({ to, href, primary = false, secondary = false, outline = false,
     Comp = 'a';
   }
 
-  const buttonClassName = `min-w-[100px] py-2 px-5 rounded text-2xl font-bold ${
-    primary
-      ? 'text-white bg-red-600 hover:cursor-pointer'
-      : 'text-black bg-white border border-gray-300 hover:bg-gray-100'
-  }
-      ${secondary ? '' : ''}
-  ${outline ? 'border-2 border-red-600' : ''}`;
-
   return (
-    <Comp className={buttonClassName} {...props}>
+    <Comp
+      className={`min-w-[100px] px-5 py-[2px] rounded text-[24px] font-bold border-1 flex justify-center items-center ${
+        primary
+          ? 'text-white bg-rose-500  hover:cursor-pointer  hover:bg-rose-600'
+          : 'text-black bg-white border border-gray-300 hover:bg-gray-100'
+      }
+      ${large ? 'min-w-[140px] px-5 py-4 text-red-600 hover:bg-rose-100' : ''}
+      ${small ? 'text-red-600 hover:bg-rose-100 min-w-[88px] px-4 py-1' : ''}
+      ${outline ? 'border-1 border-red-600' : ''}`}
+      {...props}
+    >
+      {leftIcon && <span className="icon mx-1">{leftIcon}</span>}
       <span>{children}</span>
+      {rightIcon && <span className="icon mx-1 ">{rightIcon}</span>}
     </Comp>
   );
 }

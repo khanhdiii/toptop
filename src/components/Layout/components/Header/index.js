@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import images from '~/assets/images';
-import { AiFillCloseCircle, AiOutlineLoading3Quarters, AiOutlineSearch } from 'react-icons/ai';
+import {
+  AiOutlinePlus,
+  AiFillCloseCircle,
+  AiOutlineLoading3Quarters,
+  AiOutlineSearch,
+  AiOutlineMore,
+} from 'react-icons/ai';
 import Button from '~/components/Button';
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import AccountItem from '~/components/AccountItem';
 function Header() {
   const [searchAccount, setSearchAccount] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
-      setSearchAccount([1, 2, 3]);
+      setSearchAccount([]);
     }, 3000);
   }, []);
   return (
@@ -22,11 +29,14 @@ function Header() {
           interactive
           visible={searchAccount.length > 0}
           render={(attrs) => (
-            <PopperWrapper>
-              <div className="search-result" tabIndex={-1} {...attrs}>
-                ket qua
-              </div>
-            </PopperWrapper>
+            <div className="search-result w-[500px]" tabIndex={-1} {...attrs}>
+              <PopperWrapper>
+                <h4 className="search-title font-semibold ml-1 text-sm">Account</h4>
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+              </PopperWrapper>
+            </div>
           )}
         >
           <div className="search relative w-[500px] h-[46px] border-solid border-[1.5px] border-transparent bg-gray-200 rounded-[92px] pl-4 flex after:content hover:border-gray-400">
@@ -48,13 +58,23 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className="action">
-          <Button to="/upload" outline onClick={() => {}}>
+        <div className="action flex space-x-2">
+          <Button to="/upload" leftIcon={<AiOutlinePlus />} onClick={() => {}}>
             Upload
           </Button>
           <Button primary to="/login" onClick={() => {}}>
             Login
           </Button>
+          {/* <Button small outline to="/login" onClick={() => {}}>
+            small
+          </Button>
+          <Button large outline to="/login" onClick={() => {}}>
+            large
+          </Button> */}
+
+          <button className="more-btn text-4xl">
+            <AiOutlineMore />
+          </button>
         </div>
       </div>
     </header>
