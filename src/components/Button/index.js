@@ -28,7 +28,7 @@ function Button({
 
   return (
     <Comp
-      className={`min-w-[100px] px-5 py-[2px] rounded text-[24px] font-bold border-1 flex justify-center items-center ${
+      className={`w-full px-5 py-[2px] rounded text-[24px] font-semibold flex items-center ${
         primary
           ? 'text-white bg-rose-500  hover:cursor-pointer  hover:bg-rose-600'
           : 'text-black bg-white border border-gray-300 hover:bg-gray-100'

@@ -1,16 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import images from '~/assets/images';
+import Button from '~/components/Button';
+import Tippy from '@tippyjs/react/headless';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import AccountItem from '~/components/AccountItem';
+import Menu from '~/components/Popper/Menu';
 import {
   AiOutlinePlus,
   AiFillCloseCircle,
   AiOutlineLoading3Quarters,
   AiOutlineSearch,
   AiOutlineMore,
+  AiFillQuestionCircle,
 } from 'react-icons/ai';
-import Button from '~/components/Button';
-import Tippy from '@tippyjs/react/headless';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
+import { FaQuestion } from 'react-icons/fa';
+import { MdLanguage, MdKeyboard } from 'react-icons/md';
+
+const MENU_ITEMS = [
+  {
+    icon: <MdLanguage />,
+    title: 'English',
+  },
+  {
+    icon: <FaQuestion />,
+    title: 'Feedback and help',
+    to: '/feedback',
+  },
+  {
+    icon: <MdKeyboard />,
+    title: 'Keyboard shortcuts',
+  },
+];
+
 function Header() {
   const [searchAccount, setSearchAccount] = useState([]);
 
@@ -71,10 +92,11 @@ function Header() {
           <Button large outline to="/login" onClick={() => {}}>
             large
           </Button> */}
-
-          <button className="more-btn text-4xl">
-            <AiOutlineMore />
-          </button>
+          <Menu items={MENU_ITEMS}>
+            <button className="more-btn text-4xl">
+              <AiOutlineMore />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>
