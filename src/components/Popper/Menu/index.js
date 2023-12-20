@@ -9,12 +9,12 @@ function Menu({ children, items = [] }) {
   };
   return (
     <Tippy
-      visible
+      delay={[0, 800]}
       interactive
       placement="bottom-end"
       render={(attrs) => (
-        <div className="menu-list w-[290px]" tabIndex={-1} {...attrs}>
-          <PopperWrapper>{renderItems()}</PopperWrapper>
+        <div className="menu-list w-[300px] py-2 px-1" tabIndex={-1} {...attrs}>
+          <PopperWrapper className="menu-popper py-2">{renderItems()}</PopperWrapper>
         </div>
       )}
     >

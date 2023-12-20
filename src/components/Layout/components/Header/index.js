@@ -11,7 +11,6 @@ import {
   AiOutlineLoading3Quarters,
   AiOutlineSearch,
   AiOutlineMore,
-  AiFillQuestionCircle,
 } from 'react-icons/ai';
 import { FaQuestion } from 'react-icons/fa';
 import { MdLanguage, MdKeyboard } from 'react-icons/md';
@@ -80,7 +79,7 @@ function Header() {
           </div>
         </Tippy>
         <div className="action flex space-x-2">
-          <Button to="/upload" leftIcon={<AiOutlinePlus />} onClick={() => {}}>
+          <Button to="/upload" classic leftIcon={<AiOutlinePlus />} onClick={() => {}}>
             Upload
           </Button>
           <Button primary to="/login" onClick={() => {}}>
@@ -93,7 +92,7 @@ function Header() {
             large
           </Button> */}
           <Menu items={MENU_ITEMS}>
-            <button className="more-btn text-4xl">
+            <button className="more-btn text-4xl py-2">
               <AiOutlineMore />
             </button>
           </Menu>

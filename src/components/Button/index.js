@@ -12,6 +12,7 @@ function Button({
   leftIcon = false,
   rightIcon = false,
   children,
+  className,
   onClick,
   ...passProps
 }) {
@@ -29,13 +30,14 @@ function Button({
 
   const buttonClasses = `
     w-full 
-    px-5 
+    px-3 
     py-[2px] 
     rounded 
     text-[24px] 
     font-semibold 
     flex 
     items-center 
+    ${className}
     ${primary ? 'text-white bg-rose-500 hover:cursor-pointer hover:bg-rose-600' : ' hover:bg-gray-100'}
     ${classic ? 'text-black bg-white border border-gray-300 hover:bg-gray-100' : ''}
     ${large ? 'min-w-[140px] px-5 py-4 text-red-600 hover:bg-rose-100' : ''}
@@ -45,9 +47,9 @@ function Button({
 
   return (
     <Comp className={buttonClasses} {...props}>
-      {leftIcon && <span className="icon mx-1">{leftIcon}</span>}
+      {leftIcon && <span className="icon mx-2">{leftIcon}</span>}
       <span>{children}</span>
-      {rightIcon && <span className="icon mx-1">{rightIcon}</span>}
+      {rightIcon && <span className="icon mx-2">{rightIcon}</span>}
     </Comp>
   );
 }
