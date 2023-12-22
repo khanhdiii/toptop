@@ -30,10 +30,10 @@ function Button({
 
   const buttonClasses = `
     w-full 
-    px-3 
-    py-[2px] 
+    h-[42px] 
+    px-5
     rounded 
-    text-[24px] 
+    text-[20px] 
     font-semibold 
     flex 
     items-center 

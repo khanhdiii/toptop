@@ -5,6 +5,7 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+
 import {
   AiOutlinePlus,
   AiFillCloseCircle,
@@ -19,6 +20,21 @@ const MENU_ITEMS = [
   {
     icon: <MdLanguage />,
     title: 'English',
+    children: {
+      title: 'Language',
+      data: [
+        {
+          type: 'language',
+          code: 'en',
+          title: 'English',
+        },
+        {
+          type: 'language',
+          code: 'vi',
+          title: 'Vietnamese',
+        },
+      ],
+    },
   },
   {
     icon: <FaQuestion />,
@@ -39,9 +55,18 @@ function Header() {
       setSearchAccount([]);
     }, 3000);
   }, []);
+
+  // handle logic
+  const handleMenuChange = (MenuItem) => {
+    switch (MenuItem.type) {
+      case 'language':
+        // Handle change language
+        break;
+    }
+  };
   return (
     <header className="wrapper h-[60px] w-full shadow-[0_1px_1px_rgba(0,0,0,0.12)] flex justify-center">
-      <div className="inner h-full w-[1150px] flex items-center justify-between ">
+      <div className="inner h-full px-5 w-[1150px] flex items-center justify-between ">
         <div className="logo">
           <img src={images.logo.default} alt="TikTok" width="118" height="42" />
         </div>
@@ -78,7 +103,7 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className="action flex space-x-2">
+        <div className="action flex space-x-4">
           <Button to="/upload" classic leftIcon={<AiOutlinePlus />} onClick={() => {}}>
             Upload
           </Button>
@@ -91,7 +116,7 @@ function Header() {
           <Button large outline to="/login" onClick={() => {}}>
             large
           </Button> */}
-          <Menu items={MENU_ITEMS}>
+          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className="more-btn text-4xl py-2">
               <AiOutlineMore />
             </button>
